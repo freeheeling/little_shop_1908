@@ -1,11 +1,7 @@
 <h1>View or Edit Your Order</h1>
-<p><%= @order.name %></p>
-<p> <%= @order.address %> </p>
-<p>
-  <%= @order.city %>,
-  <%= @order.state %>
-  <%= @order.zip %>
-</p>
+<p class="address"><%= @order.name %></p>
+<p class="address"><%= @order.address %> </p>
+<p class="address"><%= @order.city %>, <%= @order.state %> <%= @order.zip %></p>
 <hr>
 <section class="grid-container">
   <% @order.item_orders.each do |item_order| %>
@@ -19,6 +15,8 @@
   <% end %>
 </section>
 <hr>
-<p>Grand Total: <%= number_to_currency(@order.grand_total) %></p>
-<p>Ordered on: <%= @order.created_at.strftime('%B %d, %Y') %></p>
-<p> <%= button_to 'Edit Order', "/verified_order/#{@order.id}/edit", method: :get %></p>
+<center>
+  <h3>Grand Total: <%= number_to_currency(@order.grand_total) %></h3>
+  <p>Ordered on: <%= @order.created_at.strftime('%B %d, %Y') %></p>
+  <p> <%= button_to 'Edit Order', "/verified_order/#{@order.id}/edit", method: :get %></p>
+</center>
