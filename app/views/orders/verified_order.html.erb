@@ -2,7 +2,7 @@
 <p><%= @order.name %></p>
 <p> <%= @order.address %> </p>
 <p>
-  <%= @order.city %>
+  <%= @order.city %>,
   <%= @order.state %>
   <%= @order.zip %>
 </p>
@@ -10,15 +10,15 @@
 <section class="grid-container">
   <% @order.item_orders.each do |item_order| %>
     <section class="grid-item" id = "item-<%=item_order.item_id%>">
-      <p><%= item_order.current_item.name %></p>
+      <p><%= link_to item_order.current_item.name, "/items/#{item_order.item_id}" %></p>
       <p><%= item_order.current_item.merchant.name %></p>
-      <p>Price: $<%= item_order.current_item.price %></p>
+      <p>Price: <%= number_to_currency(item_order.current_item.price) %></p>
       <p>Quantity: <%= item_order.quantity %></p>
-      <p>Subtotal: $<%= item_order.subtotal %></p>
+      <p>Subtotal: <%= number_to_currency(item_order.subtotal) %></p>
     </section>
   <% end %>
 </section>
 <hr>
-<p>Grand Total: $<%= @order.grand_total %></p>
+<p>Grand Total: <%= number_to_currency(@order.grand_total) %></p>
 <p>Ordered on: <%= @order.created_at.strftime('%B %d, %Y') %></p>
 <p> <%= button_to 'Edit Order', "/verified_order/#{@order.id}/edit", method: :get %></p>

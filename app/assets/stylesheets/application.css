@@ -29,6 +29,7 @@ ul{
   padding: 0px;
   text-align: center;
 }
+
 img{
   width: 50%;
 }
@@ -49,6 +50,7 @@ img{
  	text-align: center;
   align-items: center;
  }
+
  .item-show-grid{
   width: 60%;
  	display: grid;
@@ -126,6 +128,26 @@ img{
 
  #cart-buttons div {
    display: flex;
+   align-items: center;
+ }
+
+ #cart-buttons-update {
+   display: flex;
+   flex-direction: column;
+   align-items: right;
+ }
+
+ #cart-buttons-update input {
+   background-color: navy;
+ }
+
+ #cart-buttons-update form {
+   background-color: #848586;
+ }
+
+ #cart-buttons-update div {
+   display: flex;
+   justify-content: center;
  }
 
  #search-bar {
@@ -141,7 +163,6 @@ img{
    background-color: #848586;
    margin-left: 10px;
    width: 20%;
-
  }
 
  input[type=text], select {
