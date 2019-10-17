@@ -50,8 +50,8 @@ RSpec.describe "As a visitor" do
 
     it "I can use the buttons I see to remove an item from my order" do
       within "#item-#{@tire.id}" do
-        expect(page).to have_button("Remove Item")
-        click_button 'Remove Item'
+        expect(page).to have_button("Remove")
+        click_button 'Remove'
       end
 
       expect(page).to_not have_css("#item-#{@tire.id}")
@@ -60,13 +60,13 @@ RSpec.describe "As a visitor" do
 
     it "If I remove the last item from my order, my order is deleted" do
       within "#item-#{@tire.id}" do
-        expect(page).to have_button("Remove Item")
-        click_button 'Remove Item'
+        expect(page).to have_button("Remove")
+        click_button 'Remove'
       end
 
       within "#item-#{@chain.id}" do
-        expect(page).to have_button("Remove Item")
-        click_button 'Remove Item'
+        expect(page).to have_button("Remove")
+        click_button 'Remove'
       end
 
       expect(current_path).to eq("/merchants")

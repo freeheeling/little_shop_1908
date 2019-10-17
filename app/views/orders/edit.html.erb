@@ -10,19 +10,25 @@
     <%= submit_tag 'Update Shipping Information' %>
   <% end %>
 </center>
-
+<hr>
 <section class="grid-container">
   <% @order.item_orders.each do |item_order| %>
-    <section class = "grid-item" id= 'item-<%=item_order.current_item.id%>'>
-      <%= item_order.current_item.name %>
+    <section class = "grid-item" id = 'item-<%=item_order.current_item.id%>'>
+      <%= link_to item_order.current_item.name, "/items/#{item_order.item_id}" %>
       <p>Sold by: <%= item_order.current_item.merchant.name %></p>
-      <p>Price: $<%= item_order.current_item.price %></p>
+      <p>Price: <%= number_to_currency(item_order.current_item.price) %></p>
       <p>Quantity: <%= item_order.quantity %></p>
-      <p>Subtotal: $<%= item_order.subtotal %></p>
-      <%= button_to 'Remove Item', "/verified_order/#{@order.id}/#{item_order.id}", method: :delete %>
+      <p>Subtotal: <%= number_to_currency(item_order.subtotal) %></p>
+      <section id="cart-buttons-update">
+        <div>
+          <%= button_to 'Remove', "/verified_order/#{@order.id}/#{item_order.id}", method: :delete %>
+        </div>
+      </section>
     </section>
   <% end %>
 </section>
-<p>Grand Total: $<%= @order.grand_total %></p>
-
-<%= button_to 'Delete Order', "/verified_order/#{@order.id}", method: :delete %>
+<hr>
+<center>
+  <h2>Grand Total: <%= number_to_currency(@order.grand_total) %><h2>
+  <%= button_to 'Delete Order', "/verified_order/#{@order.id}", method: :delete %>
+</center>
